@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
+	
+	<!-- injection Consultation -->
+	<bean id="consultationDao" class="com.myapp.gestionclinique.dao.consultation.ImplementConsultationDao"></bean>
+	<bean id="consultationMetier" class="com.myapp.gestionclinique.metier.consultation.ImplementConsultationMetier">
+		<property name="dao" ref="consultationDao"></property>
+	</bean>
+	
+	<!-- injection Facture -->
+	<bean id="factureDao" class="com.myapp.gestionclinique.dao.facture.ImplementFactureDao"></bean>
+	<bean id="factureMetier"
+		class="com.myapp.gestionclinique.metier.facture.ImplementFactureMetier">
+		<property name="dao" ref="factureDao"></property>
+	</bean>
+	
+	<!-- injection Medecin -->
+	<bean id="medecinDao" class="com.myapp.gestionclinique.dao.medecin.ImplementMedecinDao"></bean>
+	<bean id="medecinMetier"
+		class="com.myapp.gestionclinique.metier.medecin.ImplementMedecinMetier">
+		<property name="dao" ref="medecinDao"></property>
+	</bean>
+	
+	<!-- injection Patient -->
+	<bean id="patientDao" class="com.myapp.gestionclinique.dao.patient.ImplementPatientDao"></bean>
+	<bean id="patientMetier"
+		class="com.myapp.gestionclinique.metier.patient.ImplementPatientMetier">
+		<property name="dao" ref="patientDao"></property>
+	</bean>
+	
+	<!-- injection Prescription -->
+	<bean id="prescriptionDao" class="com.myapp.gestionclinique.dao.prescription.ImplementPrescriptionDao"></bean>
+	<bean id="prescriptionMetier"
+		class="com.myapp.gestionclinique.metier.prescription.ImplementPrescriptionMetier">
+		<property name="dao" ref="prescriptionDao"></property>
+	</bean>
+	
+	<!-- injection Rdv -->
+	<bean id="rdvDao" class="com.myapp.gestionclinique.dao.rdv.ImplementRdvDao"></bean>
+	<bean id="rdvMetier"
+		class="com.myapp.gestionclinique.metier.rdv.ImplementRdvMetier">
+		<property name="dao" ref="rdvDao"></property>
+	</bean>
+	
+	<bean id="datasource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+		<property name="url"
+			value="jdbc:mysql://localhost/Projet03GestionClinique"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value=""></property>
+	</bean>
+	<bean id="PersistenceUnitManager"
+		class="org.springframework.orm.jpa.persistenceunit.DefaultPersistenceUnitManager">
+		<property name="defaultDataSource" ref="datasource"></property>
+		<property name="persistenceXmlLocations">
+			<list>
+				<value>classpath*:META-INF/persistence.xml</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="EntityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceUnitManager" ref="PersistenceUnitManager"></property>
+		<property name="persistenceUnitName" value="UP_GestionClinique"></property>
+	</bean>
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="EntityManagerFactory"></property>
+	</bean>
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	<context:annotation-config></context:annotation-config>
+	
+</beans>
+
