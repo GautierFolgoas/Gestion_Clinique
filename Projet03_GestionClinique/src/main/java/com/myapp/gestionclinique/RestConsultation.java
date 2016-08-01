@@ -9,7 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.myapp.gestionclinique.entities.Chirurgie;
 import com.myapp.gestionclinique.entities.Consultation;
+import com.myapp.gestionclinique.entities.ConsultationSimple;
+import com.myapp.gestionclinique.entities.ExamenBiologie;
+import com.myapp.gestionclinique.entities.ExamenRadio;
 import com.myapp.gestionclinique.exception.ObjetInexistantException;
 import com.myapp.gestionclinique.metier.consultation.IConsultationMetier;
 
@@ -19,8 +23,20 @@ public class RestConsultation {
 	@Autowired
 	private IConsultationMetier consultationMetier;
 	
-	@RequestMapping(value="/addConsultation/{idRdv}", method=RequestMethod.POST)
-	public Consultation addConsultation(@RequestBody Consultation c, @PathVariable("idRdv") Long idRdv) throws ObjetInexistantException{
+	@RequestMapping(value="/addConsultationSimple/{idRdv}", method=RequestMethod.POST)
+	public Consultation addConsultationSimple(@RequestBody ConsultationSimple c, @PathVariable("idRdv") Long idRdv) throws ObjetInexistantException{
+		return consultationMetier.addConsultation(c, idRdv);
+	}
+	@RequestMapping(value="/addChirurgie/{idRdv}", method=RequestMethod.POST)
+	public Consultation addChirurgie(@RequestBody Chirurgie c, @PathVariable("idRdv") Long idRdv) throws ObjetInexistantException{
+		return consultationMetier.addConsultation(c, idRdv);
+	}
+	@RequestMapping(value="/addExamenRadio/{idRdv}", method=RequestMethod.POST)
+	public Consultation addExamenRadio(@RequestBody ExamenRadio c, @PathVariable("idRdv") Long idRdv) throws ObjetInexistantException{
+		return consultationMetier.addConsultation(c, idRdv);
+	}
+	@RequestMapping(value="/addExamenBiologie/{idRdv}", method=RequestMethod.POST)
+	public Consultation addExamenBiologie(@RequestBody ExamenBiologie c, @PathVariable("idRdv") Long idRdv) throws ObjetInexistantException{
 		return consultationMetier.addConsultation(c, idRdv);
 	}
 	

@@ -68,7 +68,6 @@ public class Facture {
 		this.dateFacture = dateFacture;
 	}
 	
-	@JsonIgnore
 	public Consultation getConsultation() {
 		return consultation;
 	}

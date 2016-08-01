@@ -29,7 +29,7 @@ public class RestMedecin {
 		return medecinMetier.disponibiliteMedecin(d);
 	}
 	
-	@RequestMapping(value="/disponibiliteMedecinById/{idMedecin}", method=RequestMethod.GET)
+	@RequestMapping(value="/disponibiliteMedecinById/{date}/{idMedecin}", method=RequestMethod.GET)
 	public boolean disponibiliteMedecinById(@PathVariable("date") Date d, @PathVariable("idMedecin") Long idMedecin){
 		return medecinMetier.disponibiliteMedecinById(d, idMedecin);
 	}
