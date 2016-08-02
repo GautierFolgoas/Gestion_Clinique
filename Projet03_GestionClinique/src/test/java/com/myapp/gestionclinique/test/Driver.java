@@ -3,6 +3,7 @@ package com.myapp.gestionclinique.test;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -42,6 +43,24 @@ public class Driver {
 		prescriptionMetier = (IPrescriptionMetier) context.getBean("prescriptionMetier");
 		
 		
+		/*
+		try {
+			rdvMetier.addRdv(new Rdv(new Date(), "motif"), 1L, 1L);
+			rdvMetier.addRdv(new Rdv(new Date(), "motif"), 2L, 1L);
+			rdvMetier.addRdv(new Rdv(new Date(), "motif"), 3L, 2L);
+			rdvMetier.addRdv(new Rdv(new Date(), "motif"), 3L, 3L);
+		} catch (ObjetInexistantException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
+		Date d1 = sf.parse("2016-08-25");
+		List<Medecin> tab = medecinMetier.disponibiliteMedecin(d1);
+		for(Medecin m: tab){
+			System.out.println(m.getNomMedecin());
+		}
+		*/
 		
 		
 		/*SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");

@@ -58,12 +58,10 @@ public abstract class Consultation {
 		this.synthese = synthese;
 	}
 
-	@JsonIgnore
 	public Rdv getRdv() {
 		return rdv;
 	}
 
-	@JsonSetter
 	public void setRdv(Rdv rdv) {
 		this.rdv = rdv;
 	}

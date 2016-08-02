@@ -47,6 +47,13 @@ public class ImplementRdvDao implements IRdvDao{
 
 	@Override
 	public Rdv updateRdv(Rdv r) {
+		Rdv r2 = em.find(Rdv.class, r.getIdRdv());
+		if(r2.getMedecin() != null){
+			r.setMedecin(r2.getMedecin());
+		}
+		if (r2.getPatient() != null){
+			r.setPatient(r2.getPatient());
+		}
 		em.merge(r);
 		log.info("Le rdv "+r.getIdRdv()+"a bien été modifié");
 		return r;

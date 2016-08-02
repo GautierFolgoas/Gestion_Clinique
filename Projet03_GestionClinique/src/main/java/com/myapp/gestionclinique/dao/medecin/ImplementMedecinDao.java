@@ -29,11 +29,10 @@ public class ImplementMedecinDao implements IMedecinDao{
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Medecin> disponibiliteMedecin(Date d) {
-		Date d2 = new Date();
-		Query query1 = em.createQuery("select distinct r.medecin from Rdv r where r.dateRdv<? and r.dateRdv!=?");
-		query1.setParameter(1,d2);
-		query1.setParameter(2,d);
-		Query query2 = em.createQuery("from Medecin as m where m.idMedecin not in (select r.medecin.idMedecin from Rdv as r)");
+		Query query1 = em.createQuery("select distinct r.medecin from Rdv r where r.dateRdv!= :x");
+		query1.setParameter("x",d);
+		log.info("il y a :"+query1.getResultList().size()+" medecin dans req1");
+		Query query2 = em.createQuery("from Medecin as m where m.idMedecin not in (select r.medecin from Rdv as r)");
 		List<Medecin> tabMedecin1 = query1.getResultList();
 		List<Medecin> tabMedecin2 = query2.getResultList();
 		List<Medecin> tabMedecinDispo = new ArrayList<Medecin>();
