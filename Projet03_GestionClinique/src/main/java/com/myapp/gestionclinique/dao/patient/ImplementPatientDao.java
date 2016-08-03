@@ -8,6 +8,8 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import com.myapp.gestionclinique.entities.Patient;
+import com.myapp.gestionclinique.exception.ObjetInexistantException;
+import com.myapp.gestionclinique.exception.ObjetNullException;
 
 public class ImplementPatientDao implements IPatientDao {
 	
@@ -18,7 +20,10 @@ public class ImplementPatientDao implements IPatientDao {
 	private EntityManager em;
 	
 	@Override
-	public Patient addPatient(Patient p) {
+	public Patient addPatient(Patient p) throws ObjetNullException {
+		if(p.getPrenomPatient() == null || p.getNomPatient() == null ){
+			throw new ObjetNullException("Nom et Prénom sont obligatoire");
+		}
 		em.persist(p);
 	    log.info("Le patient "+p.getNomPatient()+" a bien été ajouté");
 		return p;

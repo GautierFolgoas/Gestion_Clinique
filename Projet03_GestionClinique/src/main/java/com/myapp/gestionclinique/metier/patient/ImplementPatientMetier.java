@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.myapp.gestionclinique.dao.patient.IPatientDao;
 import com.myapp.gestionclinique.entities.Patient;
+import com.myapp.gestionclinique.exception.ObjetNullException;
 
 @Transactional
 public class ImplementPatientMetier implements IPatientMetier {
@@ -22,7 +23,7 @@ public class ImplementPatientMetier implements IPatientMetier {
 	}
 
 	@Override
-	public Patient addPatient(Patient p) {
+	public Patient addPatient(Patient p) throws ObjetNullException {
 		// TODO Auto-generated method stub
 		return dao.addPatient(p);
 	}
