@@ -1,5 +1,6 @@
 package com.myapp.gestionclinique.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -23,8 +24,7 @@ public class Prescription {
 	private String duree;
 	
 	@OneToMany
-	@JoinColumn(name="ID_PRESCRIPTION")
-	private List<Consultation> tabConsultation;
+	private List<Consultation> tabConsultation = new ArrayList<Consultation>();
 
 	
 	

@@ -42,6 +42,7 @@ public class Driver {
 		factureMetier = (IFactureMetier) context.getBean("factureMetier");
 		prescriptionMetier = (IPrescriptionMetier) context.getBean("prescriptionMetier");
 		
+		//prescriptionMetier.addPrescription(new Prescription("medicament", "frequence", 23D, "duree"), 1L);
 		
 		/*
 		try {
@@ -62,6 +63,7 @@ public class Driver {
 		}
 		*/
 		
+		patientMetier.addPatient(new Patient("nomPatient", "prenomPatient", new Date(),"sexe", "adresse", "telPatient"));
 		
 		/*SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
 		Date d1 = sf.parse("2016-08-21");
