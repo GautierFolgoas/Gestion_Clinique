@@ -8,6 +8,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class Patient {
@@ -15,12 +18,18 @@ public class Patient {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long idPatient;
+	@NotEmpty(message="Veuillez indiquer un nom.")
 	private String nomPatient;
+	@NotEmpty(message="Veuillez indiquer un prénom.")
 	private String prenomPatient;
+	@NotNull(message="Veuillez indiquer une date.")
 	@Temporal(TemporalType.DATE)
 	private Date dateDeNaissance;
+	@NotEmpty(message="Veuillez indiquer un sexe.")
 	private String sexe;
+	@NotEmpty(message="Veuillez indiquer une adresse.")
 	private String adresse;
+	@NotEmpty(message="Veuillez indiquer un numéro de téléphone.")
 	private String telPatient;
 	
 	/*

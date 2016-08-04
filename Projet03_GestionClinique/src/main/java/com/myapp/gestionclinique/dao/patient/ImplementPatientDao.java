@@ -20,10 +20,7 @@ public class ImplementPatientDao implements IPatientDao {
 	private EntityManager em;
 	
 	@Override
-	public Patient addPatient(Patient p) throws ObjetNullException {
-		if(p.getPrenomPatient() == null || p.getNomPatient() == null ){
-			throw new ObjetNullException("Nom et Prénom sont obligatoire");
-		}
+	public Patient addPatient(Patient p){
 		em.persist(p);
 	    log.info("Le patient "+p.getNomPatient()+" a bien été ajouté");
 		return p;

@@ -23,7 +23,7 @@ public class ImplementPatientMetier implements IPatientMetier {
 	}
 
 	@Override
-	public Patient addPatient(Patient p) throws ObjetNullException {
+	public Patient addPatient(Patient p){
 		// TODO Auto-generated method stub
 		return dao.addPatient(p);
 	}

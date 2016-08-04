@@ -7,7 +7,7 @@ import com.myapp.gestionclinique.exception.ObjetNullException;
 
 public interface IPatientMetier {
 	
-	public Patient addPatient(Patient p) throws ObjetNullException;
+	public Patient addPatient(Patient p);
 	public List<Patient> getListPatient();
 
 }
